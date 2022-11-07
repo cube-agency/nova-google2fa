@@ -20,7 +20,7 @@ class RegisterController extends Controller
         );
 
         return view('nova-google2fa::controllers.register', [
-            'qr' => $this->encodeAsImageUrl($google2fa_inline_svg),
+            'qr' => $google2fa_inline_svg,
             'secret' => $user->user2fa->google2fa_secret
         ]);
     }

@@ -23,9 +23,6 @@
 <body class="min-w-site text-sm font-medium min-h-full text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
 <div class="container h-full">
     <div class="px-view py-view mx-auto">
-        <div class="mx-auto py-8 max-w-xl text-center text-90">
-            @include('nova::partials.logo')
-        </div>
 
         <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-8 max-w-xl mx-auto">
             @yield('content')
