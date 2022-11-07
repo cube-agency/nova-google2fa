@@ -7,7 +7,7 @@ return [
         'description' => "L'authentification à deux facteurs (2FA) renforce la sécurité d'accès en exigeant deux méthodes (double Authentification)
             pour vérifier votre identité. L'authentification à deux facteurs vous protège contre le phishing, l'ingénierie sociale et les attaques par force brute.
             d'hameçonnage, d'ingénierie sociale et de force brute des mots de passe et protège vos connexions contre les attaquants qui exploitent des informations d'identification faibles ou volées.
-            ou volés. Traduit avec www.DeepL.com/Translator (version gratuite)",
+            ou volés.",
         'instruction_description' => "Pour activer l'authentification à deux facteurs sur votre compte, vous devez suivre les étapes suivantes :",
         'step_one' => "1. Ouvrez l'application Google Authenticator et scannez le code QR OU copiez ce code :secret et collez-le dans l'application Google Authenticator pour le configurer manuellement.",
         'step_two' => "2. Une fois l'installation réussie, entrez le code généré dans l'application dans le champ prévu ci-dessous."
