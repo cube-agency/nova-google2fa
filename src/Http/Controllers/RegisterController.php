@@ -13,14 +13,18 @@ class RegisterController extends Controller
         $user = auth()->user();
         $google2fa = new Google2FA();
 
-        $google2fa_inline_svg = $google2fa->getQRCodeInline(
+        $image = $google2fa->getQRCodeInline(
             config('app.name'),
             $user->email,
             $user->user2fa->google2fa_secret
         );
 
+        if (!str_starts_with($image, 'data:image/')) {
+            $image = $this->encodeAsImageUrl($image);
+        }
+
         return view('nova-google2fa::controllers.register', [
-            'qr' => $this->encodeAsImageUrl($google2fa_inline_svg),
+            'qr' => $image,
             'secret' => $user->user2fa->google2fa_secret
         ]);
     }
