@@ -61,7 +61,7 @@ class Google2fa
 
     private function userIsAuthenticating($request): bool
     {
-        $novaPath = config('nova.path');
+        $novaPath = trim(config('nova.path'), '/') . '/';
         return $request->path() === $novaPath . 'google2fa/authenticate' || $request->path() === $novaPath . 'google2fa/register'
             || $request->path() === $novaPath . 'google2fa/recover';
     }
