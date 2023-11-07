@@ -78,7 +78,7 @@ or
 Add relation to User model manually
 ```php
 use CubeAgency\NovaGoogle2fa\Models\User2fa;
-
+use Illuminate\Database\Eloquent\Relations\HasOne;
 ...
 
 /**
@@ -86,7 +86,7 @@ use CubeAgency\NovaGoogle2fa\Models\User2fa;
  */
 public function user2fa(): HasOne
 {
-    return $this->hasOne(User2fa::class);
+    return $this->hasOne(User2fa::class, 'user_id');
 }
 ```
 

@@ -61,19 +61,19 @@ class Google2fa
 
     private function userIsAuthenticating($request): bool
     {
-        $novaPath = trim(config('nova.path'), '/') . '/';
-        return $request->path() === $novaPath . 'google2fa/authenticate' || $request->path() === $novaPath . 'google2fa/register'
-            || $request->path() === $novaPath . 'google2fa/recover';
+        return $this->hasRouteName($request, 'nova.google2fa.authenticate')
+            || $this->hasRouteName($request, 'nova.google2fa.register')
+            || $this->hasRouteName($request, 'nova.google2fa.recover');
     }
 
     private function userHasNotFinishedSetup($request, $user): bool
     {
-        return $request->path() === config('nova.path') . 'google2fa/authenticate' && (bool)$user->user2fa->google2fa_enable === false;
+        return $this->hasRouteName($request, 'nova.google2fa.authenticate') && (bool)$user->user2fa->google2fa_enable === false;
     }
 
     private function userHasFinishedSetup($request, $user): bool
     {
-        return $request->path() === config('nova.path') . 'google2fa/register' && (bool)$user->user2fa->google2fa_enable === true;
+        return $this->hasRouteName($request, 'nova.google2fa.register') && (bool)$user->user2fa->google2fa_enable === true;
     }
 
     private function userIsAuthenticated($request): bool
@@ -86,5 +86,12 @@ class Google2fa
     private function twoFactorAuthNotSetup($user): bool
     {
         return !$user->user2fa || $user->user2fa->google2fa_enable === 0;
+    }
+
+    private function hasRouteName($request, $routeName): bool
+    {
+        $currentRouteName = $request->route()->getName();
+
+        return $currentRouteName === $routeName || $currentRouteName === $routeName . '.index';
     }
 }
